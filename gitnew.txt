@@ -1,1 +1,2 @@
 fork:create a copy of another user repo
+clone: download a remote repo to your local machine
