@@ -1,0 +1,126 @@
+create an ec2 instance
+mkdir git
+sudo yum install git
+
+git init - command to initialise the respective directory as git repository
+
+how do you check a directory is git repo or not?
+if .git folder is present, then that current directory is git repo.
+
+ls -a  ------> .git folder is created , it indicates if a particular directory is git repo or not
+vi f1  --- > add few lines
+git add f1
+git commit -m "msg"
+
+git status --> detials of file's status
+
+git log --> shows the commit ID's  (history of the repository) 
+
+git config --global user.name "pqr"
+git config --global user.email "pqr@gmail.com"
+
+git checkout commitID  ---- > switching to respective commitID
+
+touch f2 , f3
+git add *
+
+git commit -m "f2 added"
+
+
+how to change the commit message ?
+
+***************************************************************************************************************************************
+Branching 
+
+it is for parellel development, teams can work on same piece of code on different branches parellelly and later integrate by merging
+
+why we need branching? --- > to develop new features
+
+git branch ---- list all branches
+git branch branchname --- create new branch
+git checkout branchname ---- switch to branch
+git branch -d branchname --- delete branch
+
+
+
+* --- indicates we are on that branch
+
+only 1 master per repository
+
+Tagging - it is name given to set of versions of files and directories. it is easy to remember the tag names, it indicates milestone of a project.
+
+git tag tagname  -- create tag
+git checkout tagname -- switch to tag
+git tag -d tagname -- delete tag
+
+Difference b/w tag and branch ?
+
+-tag is name given to set of files
+-branching is for parellel development
+
+
+Merge
+
+git merge branchname --- merge specified branch to checked out branch. create a new commit ID indicating merge
+Merging is only 1 way --- from source to destination
+
+What is merge conflict ?
+
+Merge conflict occurs when same line of code is modified on 2 different branches . In this case we contact the person who changed the code on respective branches
+and once they let us know which changes has to be retained , we go with those changes .
+
+git log filename
+
+
+Rebase - similar to merge.
+	rewrite the commit history
+
+
+git rebase branchname
+
+What is the difference between Merge and rebase?
+
+Both merge and rebase perform same operation of integrating branches, but the difference is how they do it.
+Merge : Creates new commitID indicating merge
+	Merge conflict can be handled easily, as the commits are reachable
+
+Rebase : Rewrites the history by creating new commits for each commit in source branch
+	since commit history is rewritten, it will be difficult to understand the conflict in some cases as commits are no longer reachable.
+
+Squash : it is a technique to condense large number of commits to make into a small number of meaningful commits so that we can make git history clear
+
+git rebase -i HEAD~n
+
+
+
+git cherry_pick commit_id - to merge specific commit on branch(currently checkout branch)
+
+
+
+
+GIT Architecture
+
+we have 4 stages
+
+Workspace - it is a place where we edit , modify project related files
+            All the file in workspace are visible to all directories.
+
+Staging Area - On Git Add, files are moved from workspace to staging area where changes are saved
+
+Local Repo - on Git Commit , files will be added to local/git repo & then we can track the file versions. Commit ID are created here.
+
+Central repo - On Git Push, files are moved to central repo.
+
+
+
+git reset  -undo the commited changes, history will be removed
+
+git reset -- mixed / git reset HEAD -> moves files from staging area to workspace
+git reset -- soft / commitID -> moves files from git repo to staging area, history will removed
+git reset -- hard / commitID  -> moves files from git repo, staging area, workspace and commitID's  are also removed
+
+
+git revert - undo the commited changes , history will be retained, we can track the changes in git log
+
+git revert HEAD
+git revert commitID
