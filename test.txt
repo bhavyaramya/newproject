@@ -1,3 +1,4 @@
 AWS Region is a separate geographic area where we cluster data centers.  
 Each AWS Region is completely independent.
+modifed th file 
 Availability zones: Each AWS Region consists of multiple, isolated, and physically separate AZ's within a geographic area.
